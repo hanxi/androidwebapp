@@ -20,11 +20,14 @@ function cookieHelper() {
 			game.gb.board.toString() + 
 			"; "+ expires;
 		document.cookie = toWrite;
-		//console.log(document.cookie);
+        window.android.setCookie(toWrite);
 	}
 
 	this.getCookie = function(cname) {
 	    var name = cname + "=";
+        if (typeof window.android!="undefined") {
+            document.cookie=window.android.getCookie();
+        }
 	    var ca = document.cookie.split(';');
 	    for(var i=0; i<ca.length; i++) {
 	        var c = ca[i];

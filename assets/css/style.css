@@ -85,3 +85,7 @@ STYLING FOR GAME BOARD
     overflow-x:hidden;
     overflow-y:hidden;
 }
+
+.btn {
+    margin-bottom:5px;
+}
