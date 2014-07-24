@@ -12,7 +12,7 @@
             android:layout_width="match_parent"
             android:layout_height="45dip"
             android:layout_alignParentTop="true"
-            android:text="精选应用"
+            android:text="豌豆荚精选"
             android:textSize="17dip"
             android:textColor="@android:color/black"
             android:gravity="center_vertical|left"
