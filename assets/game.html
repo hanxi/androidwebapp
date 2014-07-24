@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<head>
+
+<title>Inverter汉化版</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+
+	<script type="text/javascript" src="js/jquery-1.10.2.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/viewmodel.js"></script>
+	<script type="text/javascript" src="js/controller.js"></script>
+</head>
+
+<body>
+	<div class="container">
+		<div class="heading">
+			<h1 class="title">Inverter汉化版</h1>
+			<div class="scoresContainer">
+				<div class="currLevel"></div>
+				<div class="best"></div>
+				<div class="score"></div>
+				<div class="total"></div>
+			</div>
+		</div>
+		<div class="aboveGame">
+			<a class="reset btn btn-primary">重新等级</a>
+			<a class="newgame btn btn-primary">重新开始</a>
+			<a class="instruct btn btn-primary">说明</a>
+			<p class="gameInfo"></p>
+		</div>
+		<div class="board"></div>
+	</div>
+    <div class="footer">
+        <a href="https://github.com/gorried/inverter"> 原作者:gorried </a><br>
+        <a href="https://github.com/gorried/inverter"> 翻译：涵曦 </a>
+    </div>
+
+
+
+	<div id="instructions" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content" id="pullThisHeight">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					</button>
+					<h4 class="modal-title">说明</h4>
+				</div>
+				<div class="modal-body">
+					<p>如何胜利: 使所以格子变成蓝色。 <br>
+					如何玩: 单击格子使其周围相邻的格子变色。</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-success" data-dismiss="modal">开始吧!</button>
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+
+	<div id="newLevel" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title" id="cheesyGoodJob"></h4>
+				</div>
+				<div class="modal-body">
+					<p id="levelDescriptor"></p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-success" data-dismiss="modal">继续</button>
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+
+	<div id="newGame" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					</button>
+					<h4 class="modal-title">确定？</h4>
+				</div>
+				<div class="modal-body">
+					<p>确定重新开始吗？</p>
+				</div>
+				<div class="modal-footer">
+					<button id="newGameConfirm" type="button" class="btn btn-success" data-dismiss="modal">重新开始</button>
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+
+	<div id="restartLevel" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					</button>
+					<h4 class="modal-title" id="cheesyGoodJob">确定？</h4>
+				</div>
+				<div class="modal-body">
+					<p>重新开始该等级？</p>
+				</div>
+				<div class="modal-footer">
+					<button id="resetLevelConfirm" type="button" class="btn btn-success" data-dismiss="modal">重新等级</button>
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+</body>
