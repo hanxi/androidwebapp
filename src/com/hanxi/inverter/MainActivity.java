@@ -148,8 +148,9 @@ public class MainActivity extends Activity {
 
             public String getCookie() {
                 SharedPreferences sp = s_instance.getSharedPreferences("SP", MODE_PRIVATE);
-                //Toast.makeText(MainActivity.this, sp.getString("cookie","no cookie"), Toast.LENGTH_LONG).show();
-                return sp.getString("cookie", "");
+                String cookie = sp.getString("cookie","no cookie");
+                //Toast.makeText(MainActivity.this, cookie, Toast.LENGTH_LONG).show();
+                return cookie;
             }
 
         }, "android");
