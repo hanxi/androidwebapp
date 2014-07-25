@@ -177,9 +177,6 @@ public class MainActivity extends Activity {
         }
     }
 
-    public void showAdsFull(final String html) {
-   }
-
     public void showExitDialog() {
         final Dialog dialog = new Dialog(s_instance,R.style.NoBoundDialog);
         LinearLayout layout = new LinearLayout(s_instance);
