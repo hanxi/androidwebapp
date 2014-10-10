@@ -61,8 +61,8 @@ public class MainActivity extends Activity {
         m_webView.getSettings().setSupportZoom(false);
         m_webView.getSettings().setAppCacheEnabled(true);
 
-        m_webView.loadUrl("file:///android_asset/game.html");
-        //m_webView.loadUrl("http://192.168.16.60:8000/game.html");
+        m_webView.loadUrl("file:///android_asset/index.html");
+        //m_webView.loadUrl("http://192.168.16.17:8080/index.html");
 
         m_webView.addJavascriptInterface(new Object() {
             public void showAdsAppWall() {

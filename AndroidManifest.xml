@@ -4,7 +4,9 @@
     android:versionCode="1"
     android:versionName="1.0">
 
-    <uses-sdk android:minSdkVersion="8" />
+    <uses-sdk
+        android:minSdkVersion="7"
+        android:targetSdkVersion="18" />
 
     <supports-screens android:largeScreens="true"
         android:smallScreens="true"
@@ -16,10 +18,12 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
 
     <application android:label="@string/app_name"
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher" android:debuggable="true">
+        android:icon="@drawable/ic_launcher"
+        android:debuggable="true">
 
         <activity android:name=".MainActivity"
             android:label="@string/app_name"
@@ -34,20 +38,28 @@
 
         <!--For AdsSdk.-->
         <activity
-            android:name="com.wandoujia.ads.sdk.AppWallActivity"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
-            android:label="@string/app_name"
-            android:launchMode="singleTop"
-            android:screenOrientation="portrait"
-            android:configChanges="orientation"/>
+                android:name="com.wandoujia.ads.sdk.AppWallActivity"
+                android:launchMode="singleTop"
+                android:configChanges="orientation|keyboardHidden|screenSize"/>
+
         <activity
-            android:name="com.wandoujia.ads.sdk.AppWidgetContainerActivity"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
-            android:label="@string/app_name"
-            android:launchMode="singleTop"
-            android:screenOrientation="portrait"
-            android:configChanges="orientation"/>
+                android:name="com.wandoujia.ads.sdk.AppWidgetContainerActivity"
+                android:theme="@android:style/Theme.Translucent.NoTitleBar"
+                android:configChanges="orientation|keyboardHidden|screenSize"/>
+
+        <activity android:name="com.wandoujia.ads.sdk.InterstitialAdActivity"
+                  android:theme="@android:style/Theme.Translucent.NoTitleBar"
+                  android:configChanges="orientation|keyboardHidden|screenSize"/>
+
         <service android:name="com.wandoujia.ads.sdk.DownloadService"/>
+
+        <receiver android:name="com.wandoujia.ads.sdk.AppChangedReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_ADDED"/>
+
+                <data android:scheme="package"/>
+            </intent-filter>
+        </receiver>
         <!--AdsSdk End.-->
 
     </application>
