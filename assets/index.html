@@ -1,116 +1,84 @@
 <!DOCTYPE html>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<html>
 <head>
-
-<title>Inverter中文版</title>
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="css/style.css">
-
-	<script type="text/javascript" src="js/jquery-1.10.2.js"></script>
-	<script type="text/javascript" src="js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="js/viewmodel.js"></script>
-	<script type="text/javascript" src="js/controller.js"></script>
+  <title>Auto2048</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <script src="js/animframe_polyfill.js"></script>
+  <script src="js/hammer.min.js"></script>
+  <script src="js/keyboard_input_manager.js"></script>
+  <script src="js/html_actuator.js"></script>
+  <script src="js/grid.js"></script>
+  <script src="js/tile.js"></script>
+  <script src="js/ai.js"></script>
+  <script src="js/game_manager.js"></script>
+  <script src="js/application.js"></script>
+  <link href="style/main.css" rel="stylesheet" type="text/css">
+  <link href="style/ai.css" rel="stylesheet" type="text/css">
 </head>
-
 <body>
-	<div class="container">
-		<div class="heading">
-			<h1 class="title">Inverter中文版</h1>
-			<div class="scoresContainer">
-				<div class="currLevel"></div>
-				<div class="best"></div>
-				<div class="score"></div>
-				<div class="total"></div>
-			</div>
-		</div>
-		<div class="aboveGame">
-			<a class="reset btn btn-primary">重新等级</a>
-			<a class="newgame btn btn-primary">重新开始</a>
-			<p class="gameInfo"></p>
-		</div>
-		<div class="board"></div>
-	</div>
-    <div class="footer">
-        <a class="share btn btn-primary">分享</a>
-        <a class="instruct btn btn-primary">玩法说明</a>
-        <a class="showAdsAppWall btn btn-primary">精品应用</a>
-        <p><a href="https://github.com/gorried/inverter"> 【原作者:gorried】 </a>
-        <a href="https://github.com/hanxi/InverterChinese"> 【翻译：涵曦】 </a></p>
+  <div class="container">
+    <div class="heading">
+      <h1 class="title">Auto2048</h1>
+      <div class="score-container">0</div>
+    </div>
+    <p class="game-intro">不需要做任何事情，只是<strong>看着并学习</strong>。也可以停下来自己玩。</p>
+
+    <div class='controls'>
+      <div id='hint-button-container'>
+        <button id='hint-button' class='ai-button'>提示</button>
+      </div>
+      <div id='feedback-container'> </div>
+      <a id="restart-button" class="restart-button">重来</a>
+      <div id='run-button-container'>
+        <button id='run-button' class='ai-button'>自动</button>
+      </div>
     </div>
 
+    <div class="game-container">
+      <div class="game-message">
+        <p></p>
+        <div class="lower">
+          <a class="retry-button">再来一次</a>
+          <div class="score-sharing"></div>
+        </div>
+      </div>
 
+      <div class="grid-container">
+        <div class="grid-row">
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+        </div>
+        <div class="grid-row">
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+        </div>
+        <div class="grid-row">
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+        </div>
+        <div class="grid-row">
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+        </div>
+      </div>
 
-	<div id="instructions" class="modal fade">
-		<div class="modal-dialog">
-			<div class="modal-content" id="pullThisHeight">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">
-						<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
-					</button>
-					<h4 class="modal-title">说明</h4>
-				</div>
-				<div class="modal-body">
-					<p>如何胜利: 使所有格子变成蓝色。 <br>
-					如何玩: 单击格子使其周围相邻的格子变色。</p>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-success" data-dismiss="modal">开始吧!</button>
-				</div>
-			</div><!-- /.modal-content -->
-		</div><!-- /.modal-dialog -->
-	</div><!-- /.modal -->
+      <div class="tile-container">
 
-	<div id="newLevel" class="modal fade">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h4 class="modal-title" id="cheesyGoodJob"></h4>
-				</div>
-				<div class="modal-body">
-					<p id="levelDescriptor"></p>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-success" data-dismiss="modal">继续</button>
-				</div>
-			</div><!-- /.modal-content -->
-		</div><!-- /.modal-dialog -->
-	</div><!-- /.modal -->
+      </div>
+    </div>
+    <div class="footer">
+        <input type="button" id="share" class="btn-primary" value="分享"/>
+        <input type="button" id="showAdsAppWall" class="btn-primary" value="精品应用"/>
+        <input type="button" id="sourceCode" class="btn-primary" value="源代码"/>
+    </div>
 
-	<div id="newGame" class="modal fade">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">
-						<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
-					</button>
-					<h4 class="modal-title">确定？</h4>
-				</div>
-				<div class="modal-body">
-					<p>确定重新开始吗？</p>
-				</div>
-				<div class="modal-footer">
-					<button id="newGameConfirm" type="button" class="btn btn-success" data-dismiss="modal">重新开始</button>
-				</div>
-			</div><!-- /.modal-content -->
-		</div><!-- /.modal-dialog -->
-	</div><!-- /.modal -->
-
-	<div id="restartLevel" class="modal fade">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">
-						<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
-					</button>
-					<h4 class="modal-title" id="cheesyGoodJob">确定？</h4>
-				</div>
-				<div class="modal-body">
-					<p>重新开始该等级？</p>
-				</div>
-				<div class="modal-footer">
-					<button id="resetLevelConfirm" type="button" class="btn btn-success" data-dismiss="modal">重新等级</button>
-				</div>
-			</div><!-- /.modal-content -->
-		</div><!-- /.modal-dialog -->
-	</div><!-- /.modal -->
 </body>
+</html>

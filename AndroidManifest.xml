@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.hanxi.inverter"
+    package="com.hanxi.webapp.auto2048"
     android:versionCode="1"
     android:versionName="1.0">
 
     <uses-sdk
-        android:minSdkVersion="7"
-        android:targetSdkVersion="18" />
+        android:minSdkVersion="8" />
 
     <supports-screens android:largeScreens="true"
         android:smallScreens="true"

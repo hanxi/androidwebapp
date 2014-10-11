@@ -1,9 +1,12 @@
+animationDelay = 100;
+minSearchTime = 50;
+
 // Wait till the browser is ready to render the game (avoids glitches)
 window.requestAnimationFrame(function () {
-  new GameManager(4, KeyboardInputManager, HTMLActuator, LocalStorageManager);
+  var manager = new GameManager(4, KeyboardInputManager, HTMLActuator);
 
   document.getElementById('share').onclick = function(){
-      window.android.share('Inverter中文版拼图','Inverter中文版拼图-快来玩吧：http://www.wandoujia.com/apps/com.hanxi.inverter ','给好友分享');
+      window.android.share('Auto2048','Auto2048-可以自动玩的2048-快来玩吧：http://www.wandoujia.com/apps/com.hanxi.webapp.auto2048 ','给好友分享');
   };
 
   document.getElementById('showAdsAppWall').onclick = function(){
@@ -11,7 +14,7 @@ window.requestAnimationFrame(function () {
   };
 
   document.getElementById('sourceCode').onclick = function(){
-      window.location.href="https://github.com/MaartenBaert/2048";
+      window.location.href="https://github.com/ov3y/2048-AI";
   };
 
 });

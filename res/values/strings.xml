@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Inverter中文版拼图</string>
+    <string name="app_name">Auto2048</string>
     <string name="exit_again">再按一次退出程序</string>
     <string name="exit_time">1000</string>
 
