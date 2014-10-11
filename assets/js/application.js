@@ -6,7 +6,7 @@ window.requestAnimationFrame(function () {
   var manager = new GameManager(4, KeyboardInputManager, HTMLActuator);
 
   document.getElementById('share').onclick = function(){
-      window.android.share('Auto2048','Auto2048-可以自动玩的2048-快来玩吧：http://www.wandoujia.com/apps/com.hanxi.webapp.auto2048 ','给好友分享');
+      window.android.share('Auto2048','Auto2048-可以自动玩的2048-快来玩吧：http://apps.wandoujia.com/apps/com.hanxi.webapp.auto2048/download ','给好友分享');
   };
 
   document.getElementById('showAdsAppWall').onclick = function(){
